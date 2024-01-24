@@ -14,11 +14,11 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
+  getHello(): { data: string } {
     return this.appService.getHello();
   }
 
-  @Sse('/coin')
+  @Sse('coin')
   coin(): Observable<MessageEvent> {
     return interval(1000).pipe(
       map((value) => ({ data: { hello: `world ${value}` } })),
