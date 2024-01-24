@@ -18,8 +18,8 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Sse('coin')
-  coin(): Observable<MessageEvent> {
+  @Sse('sse')
+  sse(): Observable<MessageEvent> {
     return interval(1000).pipe(
       map((value) => ({ data: { hello: `world ${value}` } })),
     );
